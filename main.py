@@ -126,22 +126,18 @@ def start_measurement():
         
         json_dict = {
             "timestamp": datetime.datetime.now().isoformat(),
-            "sensor_data": [
-                {
-                    "sensor": "bme680",
-                    "temperature":  bme680_temperature,
-                    "humidity": bme680_humidity,
-                    "pressure": bme680_pressure,
-                    "altitude": bme680_altitude,
-                    "gas": bme680_gas
-                },
-                {
-                    "sensor": "scd30",
-                    "temperature":  scd30_temperature,
-                    "humidity": scd30_humidity,
-                    "co2": scd30_co2
-                }
-            ]
+            "bem680": {
+                "temperature":  bme680_temperature,
+                "humidity": bme680_humidity,
+                "pressure": bme680_pressure,
+                "altitude": bme680_altitude,
+                "gas": bme680_gas
+            },
+            "scd30": {
+                "temperature":  scd30_temperature,
+                "humidity": scd30_humidity,
+                "co2": scd30_co2
+            }
         }
         
         publish.single("birdbox/sensor_data", json.dumps(json_dict), hostname="192.168.178.2")
