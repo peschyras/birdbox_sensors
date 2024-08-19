@@ -6,7 +6,6 @@ import datetime
 
 # MQTT Module
 import paho.mqtt.client as mqtt
-import paho.mqtt.publish as publish
 
 # Import sensor modules
 import board
