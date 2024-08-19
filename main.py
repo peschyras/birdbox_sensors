@@ -18,7 +18,7 @@ import adafruit_bme680
 mqtt_client = None
 
 # The interval time in seconds for collecting data from all sensors.
-measurement_inmterval = 5
+measurement_inmterval = 60
 
 # Onboard I2C Device.
 i2c = None
