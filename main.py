@@ -19,17 +19,13 @@ mqtt_client = None
 # The interval time in seconds for collecting data from all sensors.
 measurement_inmterval = 60
 
-# Time variables for burn-in calculation of the BME680 sensor.
-start_time = time.time()
-curr_time = time.time()
-
 # Onboard I2C Device.
 i2c = None
 i2c_transceiver = None
 channel = None
 
 # SCD30 sensor.
-scd30_enable = True
+scd30_enable = False
 scd30 = None
 scd30_measurement_interval = 2
 
@@ -79,6 +75,9 @@ def init_sensors():
         # of the last 50 values to set the upper limit for calculating
         # gas_baseline.
         print('[I] [BME680] Collecting gas resistance burn-in data for 5 mins')
+        # Time variables for burn-in calculation of the BME680 sensor.
+        start_time = time.time()
+        curr_time = time.time()
         while curr_time - start_time < bme680_burn_in_duration:
             curr_time = time.time()
             gas = bme680.gas
